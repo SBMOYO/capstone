@@ -1,0 +1,31 @@
+{% extends "layout.html"%}
+
+{% block content %}
+        
+<div class="container-fluid px-4 py-5 my-5 text-center">
+    <div class="lc-block mb-4">
+        <div editable="rich">
+            <h2 class="display-2 fw-bold">Find a House to rent <span class="text-primary">or list a house for rent with us</span></h2>
+        </div>
+    </div>
+    <div class="lc-block col-lg-6 mx-auto mb-5">
+        <div editable="rich">
+
+            <p class="lead">Houses for rent is a website where you can find houses for rent and list your houses for for rent</p>
+        </div>
+    </div>
+
+    <div class="lc-block d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"> 
+        {% if not request.user.is_authenticated %}
+            <a class="btn btn-primary btn-lg px-4 gap-3" href="{% url 'user_login' %}" role="button">Login</a>
+            <a class="btn btn-outline-secondary btn-lg px-4" href="{% url 'user_registration' %}" role="button">Register</a>
+        {% else %}
+            <a href="{% url 'house_registration' %}" class="btn btn-primary btn-lg px-4 gap-3" role="button">Register A House</a>
+        {% endif %}
+        </div>
+    <div class="lc-block d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <img class="img-fluid" src="https://lclibrary.b-cdn.net/starters/wp-content/uploads/sites/15/2021/10/undraw_going_up_ttm5.svg" width="" height="783" srcset="" sizes="" alt="">
+    </div>
+</div>
+
+{% endblock %}

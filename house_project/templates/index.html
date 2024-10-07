@@ -1,0 +1,39 @@
+{% extends 'layout.html' %} 
+{% load my_tags %}
+
+{% block content %}
+
+<div class="container my-2" style="padding: 3em 0">
+  <div class="row">
+
+    {% for house in houses %}
+
+      <div class="card col-12 col-md-4 col-lg-3">
+        {% with first_image=house_images|first:house %}
+          {% if first_image %}
+              <img class="card-img-top img-adjusted" src="{{ first_image.image.url }}"/>
+          {% endif %}
+        {% endwith %}
+    
+        <div class="card-body">
+          <h5 class="card-title">{{ house.name }}</h5>
+          <p class="card-text">
+            {{ house.city }}, {{ house.state }}, {{ house.country }}
+          </p>
+  
+          <p class="card-text">
+            <small class="text-muted">R{{ house.rent }}</small>
+          </p>
+          <button class="btn btn-info" "><strong><a class="button-link" href="{% url 'house' house.id %}">view House</a></strong></button>
+        </div>
+        
+        {% if request.user is house.house_host %}
+        <button class="btn btn-info" ><strong"><a class="button-link" href="{% url 'manage_house' %}">Manage Your Houses</a></strong></button>
+        {% endif %}
+      </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

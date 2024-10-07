@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houses for rent</title>
+    <link rel="stylesheet" href="{% static 'house_project/style.css' %}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <script src="{% static 'house_project/index.js' %}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-dark nav">
+        <a class="navbar-brand" href="{% url 'welcome' %}">Houses for Rent</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            {% if request.user.is_authenticated %}
+
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">Home </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'house_registration' %}">List A House</a>
+            </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+              </li>
+
+
+            {% else %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_login' %}">Login</a>
+              </li>
+            
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_registration' %}">Register</a>
+              </li>
+
+            {% endif %}
+
+          </ul>     
+          
+        </div>
+      </nav>
+     
+    {% block content %} 
+    
+    {% endblock %}
+
+
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="{% url 'index' %}">Rent A House</a></li>
+                            <li><a href="{% url 'house_registration' %}">LIst A House for Rent</a></li>
+                            <li><a href="{% url 'index' %}">Manage Your property</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="{% url 'welcome' %}">Houses for Rent</a></li>
+                            <li><a href="#">Team</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>houses for rent</h3>
+                        <p>Houses for rent is the best website where you can find houses for rent and list your houses for rent. For more information you cantact us</p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Houses for rent © 2023</p>
+            </div>
+        </footer>
+      
+    </div>
+</body>
+</html>

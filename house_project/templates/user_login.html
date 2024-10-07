@@ -1,0 +1,44 @@
+{% extends "layout.html" %} 
+
+
+{% block content %}
+
+<div class="container" style="padding: 5em 0">
+  <h3 style="text-align: center;">User Login</h3>
+  <div class="col-12 mx-auto text-right my-5 col-md-8 col-lg-6">
+    <form id="login-form" action="{% url 'user_login' %}" method="post">
+
+      {% csrf_token %}
+
+      <div class="form-group" style="padding-bottom: 20px">
+        <label for="Username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Username"
+          name="username"
+          aria-describedby="Username"
+          placeholder="Enter Username"
+        />
+        
+      </div>
+
+      <div class="form-group" style="padding-bottom: 20px">
+        <label for="input_password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="Password"
+          name="password"
+          placeholder="Password"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <a style="margin-top: 20px;" href="{% url 'user_registration' %}">not registered? sign up here</a>
+    <p>{% if message %} {{ message }} {% endif %}</p>
+  </div>
+</div>
+
+{% endblock %}

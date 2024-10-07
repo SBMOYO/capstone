@@ -1,0 +1,70 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container" style="padding: 5em 0">
+  <h3 style="text-align: center;">User Registration</h3>
+  <div class="col-12 mx-auto text-right my-5 col-md-8 col-lg-6">
+    
+    <form id="Registration-form" action="{% url 'user_registration' %}" method="post">
+      {% csrf_token %}
+
+      <div class="form-group" style="padding-bottom: 20px">
+        <label for="Username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Reg-Username"
+          name="username"
+          aria-describedby="Username"
+          placeholder="Enter Username"
+        />
+      </div>
+
+      <div class="form-group" style="padding-bottom: 20px">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="Email"
+          name="email"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+        />
+      </div>
+
+      <div class="form-group" style="padding-bottom: 20px">
+        <label for="input_password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="Reg-Password"
+          name="password"
+          placeholder="Password"
+        />
+      </div>
+
+      <div class="form-group" style="padding-bottom: 20px">
+        <label for="confirm_password">Confirm Password</label>
+        <input
+          type=" Confirm-password"
+          class="form-control"
+          id="Confirm-password"
+          name="confirmation"
+          placeholder=" Confirm Password"
+        />
+      </div>
+
+      <div class="form-check" style="padding-bottom: 20px">
+        <input type="checkbox" name="checkbox" class="form-check-input" id="exampleCheck1" />
+        <label class="form-check-label" for="exampleCheck1"
+          >Want To List Your House</label
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <a style="margin-top: 20px;" href="{% url 'user_login' %}">already registered? sign in here</a>
+    <p>{% if message %} {{ message }} {% endif %}</p>
+  </div>
+</div>
+
+{% endblock %}
