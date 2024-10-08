@@ -136,5 +136,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'house_project/media')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "house_project/static"),
 )
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 AUTH_USER_MODEL = 'house_project.User'
